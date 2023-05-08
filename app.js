@@ -14,7 +14,7 @@ const authRouter = require('./routes/authRoutes');
 const cookieParser = require('cookie-parser'); //to get cookie from frontend
 
 //get middlewares
-// const notFoundMiddleware = require('./middleware/not-found');
+const notFoundMiddleware = require('./middlewares/not-found');
 const errorHandlerMiddleware = require('./middlewares/error-handler');
 
 
@@ -28,7 +28,8 @@ app.use(cookieParser(process.env.JWT_SECRET));
 app.use('/api/v1/auth', authRouter);
 
 
-console.log("222");
+
+app.use(notFoundMiddleware);
 app.use(errorHandlerMiddleware); 
 
 
